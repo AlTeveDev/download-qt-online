@@ -11,6 +11,7 @@ jobs:
         version: 6.7.2
         host: 'linux'
         target: 'desktop'
+        path: './'
         arch: 'linux_gcc_64'
         tools: 'tools_ninja tools_cmake'
 
