@@ -13,6 +13,7 @@ jobs:
         target: 'desktop'
         dir: './'
         arch: 'linux_gcc_64'
+        modules: 'qtshadertools'
         tools: 'tools_ninja tools_cmake'
 
     - name: Package
