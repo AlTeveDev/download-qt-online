@@ -36,7 +36,7 @@ jobs:
         host: 'linux'
         target: 'desktop'
         dir: './'
-        arch: 'wasm_singlethread'
+        arch: 'wasm_multithread'
         modules: 'qtshadertools'
         tools: 'tools_ninja tools_cmake'
 
