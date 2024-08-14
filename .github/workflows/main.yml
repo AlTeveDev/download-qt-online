@@ -23,9 +23,10 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
+        name: only-linux
         path: ./
 
-  build-wasm:
+  build-android:
     runs-on: ubuntu-latest
     steps:
     - name: Install Host Qt
@@ -34,9 +35,9 @@ jobs:
         aqtsource: 'git+https://github.com/AlTeveDev/aqtinstall'
         version: 6.7.2
         host: 'linux'
-        target: 'desktop'
+        target: 'android'
         dir: './'
-        arch: 'wasm_multithread'
+        arch: 'android_arm64_v8a'
         modules: 'qtshadertools'
         tools: 'tools_ninja tools_cmake'
 
