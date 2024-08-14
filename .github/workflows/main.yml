@@ -39,7 +39,6 @@ jobs:
         dir: './'
         arch: 'android_arm64_v8a'
         modules: 'qtshadertools'
-        tools: 'tools_ninja tools_cmake'
 
     - name: Package
       run: |
