@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-wasm:
+  build-linux:
     runs-on: ubuntu-latest
     steps:
     - name: Install Host Qt
@@ -13,6 +13,30 @@ jobs:
         target: 'desktop'
         dir: './'
         arch: 'linux_gcc_64'
+        modules: 'qtshadertools'
+        tools: 'tools_ninja tools_cmake'
+
+    - name: Package
+      run: |
+        ls
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        path: ./
+
+  build-wasm:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install Host Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        aqtsource: 'git+https://github.com/AlTeveDev/aqtinstall'
+        version: 6.7.2
+        host: 'linux'
+        target: 'desktop'
+        dir: './'
+        arch: 'wasm_singlethread'
         modules: 'qtshadertools'
         tools: 'tools_ninja tools_cmake'
 
