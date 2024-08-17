@@ -1,0 +1,46 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install Host Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: 6.7.2
+        host: 'mac'
+        target: 'desktop'
+        dir: './'
+        arch: 'clang_64'
+        modules: 'qtshadertools'
+        tools: 'tools_ninja tools_cmake'
+        
+    - name: Install android Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: 6.7.2
+        host: 'mac'
+        target: 'android'
+        dir: './'
+        arch: 'android_arm64_v8a'
+        modules: 'qtshadertools'
+        
+    - name: Install ios Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: 6.7.2
+        host: 'mac'
+        target: 'ios'
+        dir: './'
+        arch: 'ios'
+        modules: 'qtshadertools'
+
+    - name: Package
+      run: |
+        ls
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        path: ./
